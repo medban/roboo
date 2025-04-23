@@ -1,7 +1,7 @@
 [build]
-  base = "client"
+  base = "/opt/build/repo/client"
   command = "npm run build"
-  publish = "build"
+  publish = "/opt/build/repo/client/build"
 
 [[redirects]]
   from = "/*"
