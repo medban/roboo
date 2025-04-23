@@ -1,0 +1,75 @@
+import React, { useEffect, useRef } from 'react';
+import "./dashbord.css"
+
+
+const Dashboard = () => {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const startCamera = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+        }
+      } catch (error) {
+        console.error('Error accessing webcam:', error);
+      }
+    };
+
+    startCamera();
+  }, []);
+
+  const handleControl = (direction) => {
+    console.log(`Move: ${direction}`);
+    // api
+  };
+
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="relative">
+        <video
+          ref={videoRef}
+          autoPlay
+          playsInline
+          muted
+          width="800"
+          height="450"
+          className="rounded-2xl shadow-lg"
+        />
+
+      
+        <div className="arrowControls">
+          <button
+            onClick={() => handleControl('up')}
+          >
+            ↑
+          </button>
+
+          <div className="arrow">
+            <button
+              onClick={() => handleControl('left')}
+            >
+              ←
+            </button>
+           
+            <button
+              onClick={() => handleControl('right')}
+            >
+              →
+            </button>
+          </div>
+
+          <button
+            onClick={() => handleControl('down')}
+            
+          >
+            ↓
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;
