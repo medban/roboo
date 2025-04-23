@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import "./dashbord.css"
-
 
 const Dashboard = () => {
   const videoRef = useRef(null);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const startCamera = async () => {
@@ -25,6 +26,15 @@ const Dashboard = () => {
     // api
   };
 
+  const handleLogout = () => {
+    console.log('Logging out...');
+
+    localStorage.clear();
+  
+  
+    navigate('/login', { replace: true });
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="relative">
@@ -38,7 +48,14 @@ const Dashboard = () => {
           className="rounded-2xl shadow-lg"
         />
 
-      
+       
+        <button
+          onClick={handleLogout}
+          className="logoutbtn"
+        >
+          Logout
+        </button>
+
         <div className="arrowControls">
           <button
             onClick={() => handleControl('up')}
@@ -52,7 +69,7 @@ const Dashboard = () => {
             >
               ←
             </button>
-           
+
             <button
               onClick={() => handleControl('right')}
             >
@@ -62,7 +79,6 @@ const Dashboard = () => {
 
           <button
             onClick={() => handleControl('down')}
-            
           >
             ↓
           </button>

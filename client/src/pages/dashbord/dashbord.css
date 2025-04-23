@@ -50,3 +50,11 @@
     transform: rotate(90deg);
   }
   
+  .logoutbtn{
+    margin-left: 10%;
+    padding: 10px 20px 20px 20px;
+    text-align: center  ;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+  }
