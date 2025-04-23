@@ -1,9 +1,9 @@
 [build]
-  base = "/opt/build/repo/client"
-  command = "npm run build"
-  publish = "/opt/build/repo/client/build"
+  base = "client"              # This is where Netlify starts building (your React app)
+  command = "npm run build"    # The build command to run (this should be the build script defined in your client/package.json)
+  publish = "client/build"     # Output folder where the built files are located
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/*"                 # Catch-all for client-side routing (SPA routing)
+  to = "/index.html"          # Redirect to index.html for all routes
   status = 200
