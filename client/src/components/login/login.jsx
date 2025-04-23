@@ -16,7 +16,7 @@ function Login() {
     setError(null);
 
     try {
-      const response = await axios.post('http://localhost:3000/api/login', {
+      const response = await axios.post('https://tranquil-sopapillas-02d741.netlify.app/.onrender.com/api/users', {
         email,
         password
       });
